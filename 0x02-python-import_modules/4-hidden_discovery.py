@@ -8,5 +8,6 @@ def main():
         if(l[i][0] != '_'):
             print("{}".format(l[i]))
 
+
 if __name__ == "__main__":
     main()
