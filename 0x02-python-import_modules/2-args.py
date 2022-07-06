@@ -4,13 +4,13 @@ import sys
 
 def main(*argv):
     i = 0
-    l = len(sys.argv) - 1
-    if l == 1:
-        print("{:d} argument:".format(l))
-    elif l == 0:
-        print("{:d} arguments.".format(l))
+    h = len(sys.argv) - 1
+    if h == 1:
+        print("{:d} argument:".format(h))
+    elif h == 0:
+        print("{:d} arguments.".format(h))
     else:
-        print("{:d} arguments:".format(l))
+        print("{:d} arguments:".format(h))
     for args in sys.argv:
         if (i != 0):
             print("{}: {}".format(i, args))
