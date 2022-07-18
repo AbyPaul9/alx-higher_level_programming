@@ -2,7 +2,4 @@
 
 
 def raise_exception():
-    try:
-        raise(TypeError)
-    except:
-        raise
+    raise TypeError
