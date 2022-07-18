@@ -2,12 +2,13 @@
 
 
 def safe_print_list(my_list=[], x=0):
-    nb = 0
-    for x in range(0, x):
+    count = 0
+    for value in my_list[:x]:
         try:
-            print(my_list[x], end="")
-            nb += 1
-        except:
-            break
-    print("")
-    return(nb)
+            print("{:d}".format(value), end='')
+            count += 1
+        except ValueError:
+            pass
+    print()
+
+    return count
