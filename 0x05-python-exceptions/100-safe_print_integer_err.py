@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 import sys
-"""
-     function that prints an integer
-    """
 
 
 def safe_print_integer_err(value):
