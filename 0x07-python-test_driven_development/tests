@@ -1,66 +1,76 @@
-The ``add_ integer`` module
+The ``matrix Divided`` module
 ======================
 
-using ``add_integer``
+using ``matrix_divided``
 
 ----------------------
+Testing Import module
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
 
-Importing the module
-    >>> add_integer = __import__("0-add_integer").add_integer
 
-Checking module Docstring
-    >>> c = __import__("0-add_integer").__doc__
-    >>> len(c) > 1
-    True
+Testing Divided without any error
+    >>> matrix_divided([[1, 2, 3],[4, 5, 6]], 3)
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
-Testing Normal Addition
-    >>> add_integer(1, 5)
-    6
-
-Testing Negative Number
-    >>> add_integer(100, -5)
-    95
-
-Testing The default Variable b= 98
-    >>> add_integer(2)
-    100
-
-Testing Emty args Raise Error
-    >>> add_integer()
+Testing Div is 0
+    >>> matrix_divided([[1, 2, 3],[4, 5, 6]], 0)
     Traceback (most recent call last):
     ...
-    TypeError: add_integer() missing 1 required positional argument: 'a'
+    ZeroDivisionError: division by zero
 
-Testing A float Return int
-    >>> add_integer(100.3, -2)
-    98
-
-Testing  not int variable for b
-    >>> add_integer(2, "Holberton")
+Testing Div is not a number
+    >>> matrix_divided([[1, 2, 3],[4, 5, 6]], "0")
     Traceback (most recent call last):
     ...
-    TypeError: b must be an integer
+    TypeError: div must be a number
 
-Testing  not int variable for a
-    >>> add_integer("school", 10)
+Testing matrix not list
+    >>> matrix_divided(3, 5)
     Traceback (most recent call last):
     ...
-    TypeError: a must be an integer
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-Testing with more than 2 args
-    >>> add_integer(5, 2, 3)
+Testing matrix as a just list
+    >>> matrix_divided([1, 2, 3], 3)
     Traceback (most recent call last):
     ...
-    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-Testing float  overflow
-    >>> add_integer(1, float('inf'))
+Testing empty matrix
+    >>> matrix_divided([[],[]], 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Testing Matrix as type boolean
+    >>> matrix_divided(True, 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Testing for uneven matrix:
+	 >>> matrix = [[1, 2, 3], [4, 5, 6, 7]]
+	 >>> matrix_divided(matrix, 3)
+	 Traceback (most recent call last):
+         ...
+	 TypeError: Each row of the matrix must have the same size
+
+Testing missing 1 arg
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_divided(matrix);
+    Traceback (most recent call last):
+	...
+    TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+Testing no arg 
+    >>> matrix_divided()
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Testing for more than 2 args:
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+	>>> matrix_divided(matrix, 1, 3)
 	Traceback (most recent call last):
 	...
-	OverflowError: cannot convert float infinity to integer
-
-Testing Nan
-	 >>> add_integer(1, float('nan'))
-	 Traceback (most recent call last):
-	 ...
-	 ValueError: cannot convert float NaN to integer
+	TypeError: matrix_divided() takes 2 positional arguments but 3 were given
