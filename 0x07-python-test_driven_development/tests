@@ -1,43 +1,34 @@
-The ``print_square`` module
+The ``text_indentation`` module
 ======================
 
-using ``print_square``
+using ``text_indentation()``
 
 ----------------------
-Testing import
-    >>> print_square = __import__('4-print_square').print_square
 
+Testing import import text_indentation:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Testing Normal Display
-    >>> print_square(4)
-    ####
-    ####
-    ####
-    ####
+test normal:
+    >>> text_indentation("test? azer")
+    test?
+    <BLANKLINE>
+    azer
 
-Testing size is not int
-    >>> print_square('Paul9')
+test text not str
+    >>> text_indentation(5)
     Traceback (most recent call last):
     ...
-    TypeError: size must be an integer
+    TypeError: text must be a string
 
-Testing size is int but less than 0
-    >>> print_square(-1)
+test output
+    >>> text_indentation("Lorem? ipsum dolor sit amet, consectetur adipiscing elit.")
+    Lorem?
+    <BLANKLINE>
+    ipsum dolor sit amet, consectetur adipiscing elit.
+    <BLANKLINE>
+
+Testing missing args
+    >>> text_indentation()
     Traceback (most recent call last):
     ...
-    ValueError: size must be >= 0
-
-Testing size is int is 0
-    >>> print_square(0)
-
-Testing size is float and less than 0
-    >>> print_square(-5.15)
-    Traceback (most recent call last):
-    ...
-    TypeError: size must be an integer
-
-Testing missing 1 arg
-    >>W print_square()
-    Traceback (most recent call last):
-    ...
-    TypeError: print_square() missing 1 required positional argument: 'size'
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
