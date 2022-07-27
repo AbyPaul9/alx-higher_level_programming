@@ -1,35 +1,43 @@
-The ``say_my_name`` module
+The ``print_square`` module
 ======================
 
-using ``say_my_name``
+using ``print_square``
 
 ----------------------
 Testing import
-    >>> say_my_name = __import__('3-say_my_name').say_my_name
+    >>> print_square = __import__('4-print_square').print_square
 
 
 Testing Normal Display
-    >>> say_my_name('Ahmed', 'Belhaj')
-    My name is Ahmed Belhaj
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
 
-Testing There is no Last name
-    >>> say_my_name('Ahmed')
-    My name is Ahmed 
-
-Testing First Name is Not str
-    >>> say_my_name(5, 'Belhaj')
+Testing size is not int
+    >>> print_square('Paul9')
     Traceback (most recent call last):
     ...
-    TypeError: first_name must be a string
+    TypeError: size must be an integer
 
-Testing last name is not str
-    >>> say_my_name('Ahmed',5)
+Testing size is int but less than 0
+    >>> print_square(-1)
     Traceback (most recent call last):
     ...
-    TypeError: last_name must be a string
+    ValueError: size must be >= 0
 
-Testing without args
-    >>> say_my_name()
+Testing size is int is 0
+    >>> print_square(0)
+
+Testing size is float and less than 0
+    >>> print_square(-5.15)
     Traceback (most recent call last):
     ...
-    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+    TypeError: size must be an integer
+
+Testing missing 1 arg
+    >>W print_square()
+    Traceback (most recent call last):
+    ...
+    TypeError: print_square() missing 1 required positional argument: 'size'
