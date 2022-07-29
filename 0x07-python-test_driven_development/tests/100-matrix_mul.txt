@@ -1,0 +1,101 @@
+The ``100-matrix_mul`` module
+======================
+
+Using ``matrix_mul``
+-------------------
+
+This is an example text file in reStructuredText format.  First import
+``matrix_mul`` from the ``100-matrix_mul`` module:
+__________________________________________________________________________________
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+__________________________________________________________________________________
+Module documentation test
+>>> len(__import__("100-matrix_mul").__doc__) > 0
+True
+
+__________________________________________________________________________________
+Function documentation test
+>>> len(__import__("100-matrix_mul").matrix_mul.__doc__) > 0
+True
+
+__________________________________________________________________________________
+>>> print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+[[7, 10], [15, 22]]
+
+__________________________________________________________________________________
+>>> print(matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+[[13, 16]]
+
+__________________________________________________________________________________
+>>> matrix_mul('a')
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() missing 1 required positional argument: 'prmMatrixB'
+
+__________________________________________________________________________________
+>>> matrix_mul('a', 'b')
+Traceback (most recent call last):
+    ...
+TypeError: m_a must be a list
+
+__________________________________________________________________________________
+>>> matrix_mul([[1, 2], [3, 4]], 'a')
+Traceback (most recent call last):
+    ...
+TypeError: m_b must be a list
+
+__________________________________________________________________________________
+>>> matrix_mul([1, 2], [3, 4])
+Traceback (most recent call last):
+    ...
+TypeError: m_a must be a list of lists
+
+__________________________________________________________________________________
+>>> matrix_mul([[1, 2], [3, 4]], [3, 4])
+Traceback (most recent call last):
+    ...
+TypeError: m_b must be a list of lists
+
+__________________________________________________________________________________
+>>> matrix_mul([], [])
+Traceback (most recent call last):
+    ...
+TypeError: m_a can't be empty
+
+__________________________________________________________________________________
+>>> matrix_mul([[1, 2], [3, 4]], [])
+Traceback (most recent call last):
+    ...
+TypeError: m_b can't be empty
+
+__________________________________________________________________________________
+>>> matrix_mul([[], []], [[], []])
+Traceback (most recent call last):
+    ...
+TypeError: m_a can't be empty
+
+__________________________________________________________________________________
+>>> matrix_mul([[1, 2], []], [[], []])
+Traceback (most recent call last):
+    ...
+TypeError: m_b can't be empty
+
+__________________________________________________________________________________
+>>> matrix_mul([[1, 2], [3, 4]], [[], []])
+Traceback (most recent call last):
+    ...
+TypeError: m_b can't be empty
+
+__________________________________________________________________________________
+>>> matrix_mul([[1, 2], [3, 4]], [[], [3, 4]])
+Traceback (most recent call last):
+    ...
+TypeError: m_b can't be empty
+
+__________________________________________________________________________________
+Too many argument
+>>> matrix_mul([[1, 2]], [[3, 4], [5, 6]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() takes 2 positional arguments but 3 were given
