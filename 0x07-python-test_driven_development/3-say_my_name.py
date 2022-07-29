@@ -1,22 +1,16 @@
 #!/usr/bin/python3
-"""
-module that print Names
+""" say_my_name module """
+
+
+def say_my_name(prmFirstName, prmLastName=""):
+    """ say_my_name function
+    this function concatenated first name and last name and print the result
+    Attributes:
+        prmFirstName: first name
+        prmLastName: last name
     """
-
-
-def say_my_name(first_name, last_name=""):
-    """
-        print name and last name
-        Args:
-            first_name (str): The first name
-            last_name (str): The last name
-        Raise:
-            TypeError: if first or last name is not string
-        Return: print My name is <first name> <last name>
-        """
-    if type(first_name) is not str:
-        raise TypeError('first_name must be a string')
-    if type(last_name) is not str:
-        raise TypeError('last_name must be a string')
-    print("My name is {} {}".format(first_name, last_name))
-
+    if not isinstance(prmFirstName, str):
+        raise TypeError("first_name must be a string")
+    if not isinstance(prmLastName, str):
+        raise TypeError("last_name must be a string")
+    print("My name is {} {}".format(prmFirstName, prmLastName))

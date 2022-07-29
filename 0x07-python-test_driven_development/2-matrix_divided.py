@@ -1,32 +1,37 @@
 #!/usr/bin/python3
-"""
-Module Devide Matrix
-    """
+""" matrix_divided module """
 
 
-def matrix_divided(matrix, div):
+def matrix_divided(prmMatrix, prmDiv):
+    """ matrix_divided function
+    Attributes:
+        prmMatrix: matrix of value
+        prmDiv: number to divide each value of the matrix
     """
-        Devides all elements in matrix
-        Args:
-            matrix (list[list[int/float]]) : matrice
-            div (int/float) Devider
-        Raise:
-            TypeError: div not int or float
-            TypeError: matix is not a list of list of number
-            ZeroDivisionError: Div is 0
-        Return : New matrix Devided
-        """
-    if type(div) not in [int, float]:
-        raise TypeError("div must be a number")
-    if div == 0:
-        raise ZeroDivisionError('division by zero')
-    if type(matrix) is not list or not all((type(l) is list)for l in matrix) \
-        or not all((isinstance(n, (int, float))for n in l)for l in matrix) \
-            or len(matrix[0]) == 0:
-        raise TypeError(
-                "matrix must be a matrix "
-                "(list of lists) of integers/floats")
-    l = len(matrix[0])
-    if not all((len(x) == l)for x in matrix):
-        raise TypeError("Each row of the matrix must have the same size")
-    return [list(map(lambda x: round(x / div, 2), r))for r in matrix]
+    errTypeMsg = "matrix must be a matrix (list of lists) of integers/floats"
+    errSameSizeMsg = "Each row of the matrix must have the same size"
+    if not all(isinstance(ele, list) for ele in prmMatrix):
+        raise TypeError(errTypeMsg)
+
+    new = prmMatrix.copy()
+    rowLen = len(new)
+
+    if rowLen > 0:
+        columnLen = len(new[0])
+
+        for row in range(len(new)):
+            if not all(isinstance(ele, (int, float)) for ele in new[row]):
+                raise TypeError(errTypeMsg)
+            if len(new[row]) != columnLen:
+                raise TypeError(errSameSizeMsg)
+
+        if not isinstance(prmDiv, int):
+            raise TypeError("div must be a number")
+        if prmDiv == 0:
+            raise ZeroDivisionError("division by zero")
+
+        for row in range(len(new)):
+            for column in range(len(new[row])):
+                new[row][column] = round(float(new[row][column] / prmDiv), 2)
+
+		return new
