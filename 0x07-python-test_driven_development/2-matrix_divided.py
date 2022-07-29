@@ -33,5 +33,4 @@ def matrix_divided(prmMatrix, prmDiv):
         for row in range(len(new)):
             for column in range(len(new[row])):
                 new[row][column] = round(float(new[row][column] / prmDiv), 2)
-
 		return new
