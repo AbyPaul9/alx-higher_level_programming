@@ -1,0 +1,61 @@
+The ``3-say_my_name`` module
+======================
+
+Using ``say_my_name``
+-------------------
+
+This is an example text file in reStructuredText format.  First import
+``say_my_name`` from the ``3-say_my_name`` module:
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+__________________________________________________________________________________
+Module documentation test
+>>> len(__import__("3-say_my_name").__doc__) > 0
+True
+
+__________________________________________________________________________________
+Function documentation test
+>>> len(__import__("3-say_my_name").say_my_name.__doc__) > 0
+True
+
+__________________________________________________________________________________
+Concatenated name print
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+__________________________________________________________________________________
+>>> say_my_name("Walter", "White")
+My name is Walter White
+
+__________________________________________________________________________________
+No name
+>>> say_my_name("Bob")
+My name is Bob 
+
+__________________________________________________________________________________
+Invalid single first name format
+>>> say_my_name(2)
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+__________________________________________________________________________________
+Invalid first name format
+>>> say_my_name(4, "White")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+__________________________________________________________________________________
+Invalid last name format
+>>> say_my_name("Bob", 4)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+__________________________________________________________________________________
+Too many argument
+>>> say_my_name("John", "Snow", "White")
+Traceback (most recent call last):
+    ...
+TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
