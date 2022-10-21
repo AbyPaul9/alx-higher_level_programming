@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 """
-request a body if error display statue code
+    script that takes in a URL, sends a request to the URL handling error
 """
 
-if __name__ == '__main__':
-    import urllib.request
-    import urllib.error
-    import sys
-    url = sys.argv[1]
 
-    req = urllib.request.Request(url)
+from urllib import request, error
+import sys
+
+
+if __name__ == "__main__":
     try:
-        with urllib.request.urlopen(req) as response:
-            info = response.read()
-            print(info.decode("ascii"))
-    except urllib.error.HTTPError as e:
-        print("Error code: {}".format(e.code)
+        url = sys.argv[1]
+        with request.urlopen(url) as response:
+            content = response.read()
+            print(content.decode("utf-8"))
+    except error.HTTPError as exception:
+        print("Error code: {}".format(exception.code))
